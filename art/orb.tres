@@ -1,0 +1,10 @@
+[gd_resource type="SphereMesh" load_steps=3 format=3 uid="uid://kqymuglagy8x"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t1n5s"]
+load_path = "res://.godot/imported/icon.svg-2ffe2e9772a318535303737ea3c29287.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7uw0"]
+albedo_texture = SubResource("CompressedTexture2D_t1n5s")
+
+[resource]
+material = SubResource("StandardMaterial3D_l7uw0")

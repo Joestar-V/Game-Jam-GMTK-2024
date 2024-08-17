@@ -1,24 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckoyyxj2kajkn"]
+[gd_scene load_steps=7 format=3 uid="uid://ckoyyxj2kajkn"]
 
 [ext_resource type="PackedScene" uid="uid://ccix2m1mychsq" path="res://scenes/platform.tscn" id="1_qf50k"]
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_y2gmh"]
 [ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="2_y7rdm"]
+[ext_resource type="PackedScene" uid="uid://hxc3lp6l0ie7" path="res://scenes/heart.tscn" id="3_ls8fg"]
+[ext_resource type="PackedScene" uid="uid://ctiovbbjw4isg" path="res://scenes/sphere.tscn" id="5_yavr6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rp7mi"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_y2gmh")
 
-[node name="Node2D" parent="." instance=ExtResource("1_qf50k")]
+[node name="Platform Bottom" parent="." instance=ExtResource("1_qf50k")]
 position = Vector2(536, 414)
 
-[node name="Node2D2" parent="." instance=ExtResource("1_qf50k")]
+[node name="Platform Left" parent="." instance=ExtResource("1_qf50k")]
 position = Vector2(267, 292)
 
-[node name="Node2D3" parent="." instance=ExtResource("1_qf50k")]
+[node name="Platform Right" parent="." instance=ExtResource("1_qf50k")]
 position = Vector2(796, 281)
 
-[node name="Node2D4" parent="." instance=ExtResource("1_qf50k")]
+[node name="Platfoorm Top" parent="." instance=ExtResource("1_qf50k")]
 position = Vector2(537, 177)
 
-[node name="Node2D5" parent="." instance=ExtResource("2_y7rdm")]
+[node name="Player" parent="." instance=ExtResource("2_y7rdm")]
 position = Vector2(261, 188)
 
-[node name="Node2D6" parent="." instance=ExtResource("1_qf50k")]
-position = Vector2(200, 495)
+[node name="Floor" parent="." instance=ExtResource("1_qf50k")]
+position = Vector2(571, 558)
+scale = Vector2(6.82759, 0.666667)
+
+[node name="Heart" parent="." instance=ExtResource("3_ls8fg")]
+position = Vector2(522, 297)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1006, 102)
+scale = Vector2(1.33386, 1.02694)
+texture = SubResource("ViewportTexture_rp7mi")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="sphere" parent="SubViewport" instance=ExtResource("5_yavr6")]

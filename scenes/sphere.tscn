@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctiovbbjw4isg"]
+
+[ext_resource type="Script" path="res://scenes/sphere.gd" id="1_nexrv"]
+[ext_resource type="SphereMesh" uid="uid://kqymuglagy8x" path="res://art/orb.tres" id="2_bpulv"]
+
+[node name="sphere" type="Node3D"]
+script = ExtResource("1_nexrv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_bpulv")
+skeleton = NodePath("../../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, -1.65077)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -2.30915)
