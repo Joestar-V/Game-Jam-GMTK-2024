@@ -22,4 +22,6 @@ shape = SubResource("RectangleShape2D_v1hkl")
 [node name="Timer" type="Timer" parent="Player"]
 wait_time = 0.25
 
+[node name="Timer2" type="Timer" parent="Player"]
+
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
