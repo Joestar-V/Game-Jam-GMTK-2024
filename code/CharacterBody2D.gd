@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@onready var anim = $AnimatedSprite2D
+@onready var col2D = $CollisionShape2D
+
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
@@ -16,12 +19,16 @@ func _physics_process(delta):
 	if Input.is_action_pressed("horizontal")  && stretched_y == false && cooldown == false:
 		stretched = true
 		stretched_x = true
-		scale.x = 2
+		col2D.scale.x = 2
+		if anim.animation != ("hboil") && anim.animation != ("horizontal"):
+			anim.play("horizontal")
 		return
 	elif Input.is_action_pressed("vertical")  && stretched_x == false && cooldown == false:
 		stretched = true
 		stretched_y = true
-		scale.y = 2
+		col2D.scale.y = 2
+		if anim.animation != ("vboil") && anim.animation != ("horizontal"):
+			anim.play("vertical")
 		return
 	else :
 		if(stretched == true):
@@ -69,6 +76,8 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
+	
+	anim.play("idle")
 	move_and_slide()
 
 #func _input(event : InputEvent): 
@@ -82,3 +91,10 @@ func _on_timer_timeout():
 
 func _on_timer_2_timeout():
 	buffer = false
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if anim.animation == "horizontal":
+		anim.play("hboil")
+	if anim.animation == "vertical":
+		anim.play("vboil")
