@@ -11,6 +11,7 @@ var stretched_y = false
 var stretched_x = false
 var cooldown = false
 var spin = false
+var buffer = false
 func _physics_process(delta):
 	if Input.is_action_pressed("horizontal")  && stretched_y == false && cooldown == false:
 		stretched = true
@@ -37,11 +38,11 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	# Handle jump.
-	if(Input.is_action_just_pressed("ui_accept") and is_on_floor() and velocity.x > 0.0 and Input.is_action_pressed("ui_left")):
+	if(Input.is_action_just_pressed("ui_accept") and is_on_floor() and Input.is_action_pressed("ui_left") and buffer):
 		velocity.x = -velocity.x
 		velocity.y = JUMP_VELOCITY
 		spin = true
-	elif(Input.is_action_just_pressed("ui_accept") and is_on_floor() and velocity.x < 0.0 and Input.is_action_pressed("ui_right")):
+	elif(Input.is_action_just_pressed("ui_accept") and is_on_floor() and buffer and Input.is_action_pressed("ui_right")):
 		velocity.x = - velocity.x
 		velocity.y = JUMP_VELOCITY
 		spin = true
@@ -56,7 +57,11 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if(velocity.x > 0.0 and Input.is_action_pressed("ui_left")):
-		$Timer2.start
+		$Timer2.start()
+		buffer = true
+	if(velocity.x < 0.0 and Input.is_action_pressed("ui_right")):
+		$Timer2.start()
+		buffer = true
 		
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
@@ -73,3 +78,7 @@ func _physics_process(delta):
 
 func _on_timer_timeout():
 	cooldown = false
+
+
+func _on_timer_2_timeout():
+	buffer = false
