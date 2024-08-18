@@ -1,14 +1,44 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckoyyxj2kajkn"]
+[gd_scene load_steps=13 format=3 uid="uid://ckoyyxj2kajkn"]
 
 [ext_resource type="PackedScene" uid="uid://ccix2m1mychsq" path="res://scenes/platform.tscn" id="1_qf50k"]
 [ext_resource type="Script" path="res://code/level.gd" id="1_y2gmh"]
 [ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="2_y7rdm"]
 [ext_resource type="PackedScene" uid="uid://hxc3lp6l0ie7" path="res://scenes/heart.tscn" id="3_ls8fg"]
 [ext_resource type="PackedScene" uid="uid://ctiovbbjw4isg" path="res://scenes/sphere.tscn" id="5_yavr6"]
-[ext_resource type="PackedScene" uid="uid://bkxs1lyj44fqn" path="res://scenes/enemy.tscn" id="6_73ev7"]
+[ext_resource type="PackedScene" uid="uid://4vubkimjd531" path="res://scenes/spawner.tscn" id="7_w37dv"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rp7mi"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Curve2D" id="Curve2D_4wmrw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -128, -128, 0, 0, 0, 0, 1280, -128, 0, 0, 0, 0, 1280, 768, 0, 0, 0, 0, -128, 768, 0, 0, 0, 0, -128, -128)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_nw0ad"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, -128, 0, 0, 0, 0, 1024, -128)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_xinsb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1280, 128, 0, 0, 0, 0, 1280, 520)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_t8s7t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1024, 776, 0, 0, 0, 0, 128, 776)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_epuqy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -128, 520, 0, 0, 0, 0, -128, 120)
+}
+point_count = 2
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_y2gmh")
@@ -33,6 +63,7 @@ scale = Vector2(1.16, 1.16)
 position = Vector2(261, 188)
 
 [node name="Player" parent="Player" index="0"]
+scale = Vector2(0.501716, 0.5)
 jump_height = 68.675
 jump_time_to_descent = 0.31
 
@@ -45,7 +76,7 @@ position = Vector2(522, 297)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(1006, 102)
+position = Vector2(523, 294)
 scale = Vector2(1.33386, 1.02694)
 texture = SubResource("ViewportTexture_rp7mi")
 
@@ -54,16 +85,45 @@ transparent_bg = true
 
 [node name="sphere" parent="SubViewport" instance=ExtResource("5_yavr6")]
 
-[node name="Enemy2" parent="." instance=ExtResource("6_73ev7")]
-position = Vector2(118, 466)
+[node name="SpawnPath" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_4wmrw")
 
-[node name="Enemy" parent="." instance=ExtResource("6_73ev7")]
-position = Vector2(47, 147)
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath"]
+position = Vector2(-128, -128)
 
-[node name="Enemy3" parent="." instance=ExtResource("6_73ev7")]
-position = Vector2(943, 451)
+[node name="Spawner" parent="." node_paths=PackedStringArray("path1", "path2", "path3", "path4") instance=ExtResource("7_w37dv")]
+path1 = NodePath("../SpawnPath1/SpawnPathLocation")
+path2 = NodePath("../SpawnPath2/SpawnPathLocation")
+path3 = NodePath("../SpawnPath3/SpawnPathLocation")
+path4 = NodePath("../SpawnPath4/SpawnPathLocation")
 
-[node name="Enemy4" parent="." instance=ExtResource("6_73ev7")]
-position = Vector2(657, 35)
+[node name="SpawnPath1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_nw0ad")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath1"]
+position = Vector2(128, -128)
+
+[node name="SpawnPath2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_xinsb")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath2"]
+position = Vector2(1280, 128)
+rotation = 1.5708
+
+[node name="SpawnPath3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_t8s7t")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath3"]
+position = Vector2(1024, 776)
+rotation = 3.14159
+
+[node name="SpawnPath4" type="Path2D" parent="."]
+curve = SubResource("Curve2D_epuqy")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath4"]
+position = Vector2(-128, 520)
+rotation = -1.5708
 
 [editable path="Player"]
+[editable path="Spawner"]
