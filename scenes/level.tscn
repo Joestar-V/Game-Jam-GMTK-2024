@@ -15,18 +15,26 @@ script = ExtResource("1_y2gmh")
 
 [node name="Platform Bottom" parent="." instance=ExtResource("1_qf50k")]
 position = Vector2(536, 414)
+scale = Vector2(1.16, 1)
 
 [node name="Platform Left" parent="." instance=ExtResource("1_qf50k")]
 position = Vector2(267, 292)
+scale = Vector2(1.16, 1.16)
 
 [node name="Platform Right" parent="." instance=ExtResource("1_qf50k")]
 position = Vector2(796, 281)
+scale = Vector2(1.16, 1.16)
 
 [node name="Platfoorm Top" parent="." instance=ExtResource("1_qf50k")]
 position = Vector2(537, 177)
+scale = Vector2(1.16, 1.16)
 
 [node name="Player" parent="." instance=ExtResource("2_y7rdm")]
 position = Vector2(261, 188)
+
+[node name="Player" parent="Player" index="0"]
+jump_height = 68.675
+jump_time_to_descent = 0.31
 
 [node name="Floor" parent="." instance=ExtResource("1_qf50k")]
 position = Vector2(571, 558)
@@ -57,3 +65,5 @@ position = Vector2(943, 451)
 
 [node name="Enemy4" parent="." instance=ExtResource("6_73ev7")]
 position = Vector2(657, 35)
+
+[editable path="Player"]
