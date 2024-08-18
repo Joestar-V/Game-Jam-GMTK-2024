@@ -1,12 +1,12 @@
 extends Node2D
 
-
+var health = 3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#unc _process(delta):
-	#var texture = $SubViewport.get_texture()
-	#$Screen.texture = texture 
+func _process(delta):
+	if(health <= 0):
+		pass
