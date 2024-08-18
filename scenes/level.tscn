@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="2_y7rdm"]
 [ext_resource type="PackedScene" uid="uid://hxc3lp6l0ie7" path="res://scenes/heart.tscn" id="3_ls8fg"]
 [ext_resource type="PackedScene" uid="uid://ctiovbbjw4isg" path="res://scenes/sphere.tscn" id="5_yavr6"]
-[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="6_73ev7"]
+[ext_resource type="PackedScene" uid="uid://bkxs1lyj44fqn" path="res://scenes/enemy.tscn" id="6_73ev7"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rp7mi"]
 viewport_path = NodePath("SubViewport")
@@ -14,29 +14,40 @@ viewport_path = NodePath("SubViewport")
 script = ExtResource("1_y2gmh")
 
 [node name="Platform Bottom" parent="." instance=ExtResource("1_qf50k")]
-position = Vector2(620, 442)
+position = Vector2(536, 414)
+scale = Vector2(1.16, 1)
 
 [node name="Platform Left" parent="." instance=ExtResource("1_qf50k")]
-position = Vector2(255, 320)
+position = Vector2(267, 292)
+scale = Vector2(1.16, 1.16)
 
 [node name="Platform Right" parent="." instance=ExtResource("1_qf50k")]
-position = Vector2(950, 309)
+position = Vector2(796, 281)
+scale = Vector2(1.16, 1.16)
 
 [node name="Platfoorm Top" parent="." instance=ExtResource("1_qf50k")]
-position = Vector2(621, 205)
+position = Vector2(537, 177)
+scale = Vector2(1.16, 1.16)
 
 [node name="Player" parent="." instance=ExtResource("2_y7rdm")]
-position = Vector2(230, 253)
+position = Vector2(261, 188)
+
+[node name="Player" parent="Player" index="0"]
+jump_height = 68.675
+jump_time_to_descent = 0.31
+
+[node name="Floor" parent="." instance=ExtResource("1_qf50k")]
+position = Vector2(571, 558)
+scale = Vector2(6.82759, 0.666667)
 
 [node name="Heart" parent="." instance=ExtResource("3_ls8fg")]
-position = Vector2(606, 325)
+position = Vector2(522, 297)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(604, 326)
+position = Vector2(1006, 102)
 scale = Vector2(1.33386, 1.02694)
 texture = SubResource("ViewportTexture_rp7mi")
-metadata/_edit_lock_ = true
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -44,13 +55,15 @@ transparent_bg = true
 [node name="sphere" parent="SubViewport" instance=ExtResource("5_yavr6")]
 
 [node name="Enemy2" parent="." instance=ExtResource("6_73ev7")]
-position = Vector2(202, 494)
+position = Vector2(118, 466)
 
 [node name="Enemy" parent="." instance=ExtResource("6_73ev7")]
-position = Vector2(131, 175)
+position = Vector2(47, 147)
 
 [node name="Enemy3" parent="." instance=ExtResource("6_73ev7")]
-position = Vector2(1027, 479)
+position = Vector2(943, 451)
 
 [node name="Enemy4" parent="." instance=ExtResource("6_73ev7")]
-position = Vector2(741, 63)
+position = Vector2(657, 35)
+
+[editable path="Player"]

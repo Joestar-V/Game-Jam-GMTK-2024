@@ -80,7 +80,7 @@ size = Vector2(121, 91.6667)
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_xymxr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
@@ -100,7 +100,7 @@ shape = SubResource("RectangleShape2D_v1hkl")
 wait_time = 0.25
 
 [node name="Timer2" type="Timer" parent="Player"]
-wait_time = 0.4
+wait_time = 0.5
 
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="timeout" from="Player/Timer2" to="Player" method="_on_timer_2_timeout"]
