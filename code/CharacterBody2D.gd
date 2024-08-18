@@ -6,13 +6,24 @@ const JUMP_VELOCITY = -600.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+var stretched
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
+	if Input.is_action_pressed("horizontal") :
+		stretched = true
+		scale.x = 1
+		return
+	elif Input.is_action_pressed("vertical") :
+		stretched = true
+		scale.y = 1
+		return
+	else :
+		stretched = false
+		scale.x = .5
+		scale.y = .5
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
