@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck3ss3bcbrk8x"]
+
+[ext_resource type="Texture2D" uid="uid://dvwsxe5obfr22" path="res://art/tileGreen.png" id="1_kuomj"]
+[ext_resource type="Script" path="res://code/moving_platform.gd" id="1_qowut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xicxj"]
+size = Vector2(204, 24)
+
+[sub_resource type="Animation" id="Animation_osiox"]
+resource_name = "move"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ygola"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8nfsa"]
+_data = {
+"RESET": SubResource("Animation_ygola"),
+"move": SubResource("Animation_osiox")
+}
+
+[node name="Path2D" type="Path2D"]
+script = ExtResource("1_qowut")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(168.12, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture_filter = 1
+position = Vector2(-0.499996, -0.5)
+scale = Vector2(8.54167, 3.125)
+texture = ExtResource("1_kuomj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_xicxj")
+one_way_collision = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(168.12, 0)
+progress = 168.117
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8nfsa")
+}

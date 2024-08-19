@@ -1,0 +1,215 @@
+[gd_scene load_steps=19 format=3 uid="uid://dc0gs01galmga"]
+
+[ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="2_sr7bl"]
+[ext_resource type="PackedScene" uid="uid://hxc3lp6l0ie7" path="res://scenes/heart.tscn" id="3_x1mb0"]
+[ext_resource type="PackedScene" uid="uid://ctiovbbjw4isg" path="res://scenes/sphere.tscn" id="4_36wqi"]
+[ext_resource type="PackedScene" uid="uid://drw0da3aj0lfg" path="res://scenes/spawner.tscn" id="5_4drt5"]
+[ext_resource type="PackedScene" uid="uid://bo0vku4ha18rt" path="res://scenes/round.tscn" id="6_fyroa"]
+[ext_resource type="PackedScene" uid="uid://cjs1xlg7v74eq" path="res://scenes/teleporter.tscn" id="7_rgbqw"]
+[ext_resource type="PackedScene" uid="uid://ck3ss3bcbrk8x" path="res://scenes/moving_platform.tscn" id="8_m5xys"]
+[ext_resource type="PackedScene" uid="uid://cj7wyourbqd07" path="res://scenes/wall_teleporter.tscn" id="8_wlhwj"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yucgj"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Curve2D" id="Curve2D_jl404"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -128, -128, 0, 0, 0, 0, 1280, -128, 0, 0, 0, 0, 1280, 768, 0, 0, 0, 0, -128, 768, 0, 0, 0, 0, -128, -128)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_kdiw2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, -128, 0, 0, 0, 0, 1024, -128)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_r5weo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1280, 128, 0, 0, 0, 0, 1280, 520)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_s5mic"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1024, 776, 0, 0, 0, 0, 128, 776)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_a7t1a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -128, 520, 0, 0, 0, 0, -128, 120)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_08dig"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0.437029, -194.007, -0.437029, 194.007, 218.537, 194.446, 0, 0, 0, 0, -4.27759, 383.976, 0.28778, 193.055, -0.28778, -193.055, -222.815, 189.53, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_feapc"]
+_data = {
+"points": PackedVector2Array(0, -190.659, 0, 190.659, 220.693, 191.996, 0, 0, 0, 0, 0, 383.992, -0.813698, 189.715, 0.813698, -189.715, -220.693, 191.996, 0, 0, 0, 0, 0, 0, -0.967655, -192.498, 0.967655, 192.498, 220.693, 191.996)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_at4va"]
+_data = {
+"points": PackedVector2Array(220.262, 0, -220.262, 0, 0, 383.992, 0, 0, 0, 0, -220.693, 191.996, -220.693, -0.499989, 220.693, 0.499989, 0, 0, 0, 0, 0, 0, 220.693, 191.996, 220.06, 0, -220.06, 0, 0, 383.992)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_hrjat"]
+_data = {
+"points": PackedVector2Array(0, 189.532, 0, -189.532, -220.693, 191.996, 0, 0, 0, 0, 0, 0, -1.29166, -194.776, 1.29166, 194.776, 220.693, 191.996, 0, 0, 0, 0, 0, 383.992, 0.645832, 190.281, -0.645832, -190.281, -220.693, 191.996)
+}
+point_count = 5
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_sr7bl")]
+position = Vector2(261, 188)
+
+[node name="Player" parent="Player" index="0"]
+position = Vector2(139, 20)
+scale = Vector2(0.501716, 0.5)
+jump_height = 68.675
+jump_time_to_descent = 0.31
+
+[node name="Heart" parent="." instance=ExtResource("3_x1mb0")]
+position = Vector2(576, 320)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 320)
+scale = Vector2(1.33386, 1.02694)
+texture = SubResource("ViewportTexture_yucgj")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="sphere" parent="SubViewport" instance=ExtResource("4_36wqi")]
+
+[node name="SpawnPath" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_jl404")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath"]
+position = Vector2(-128, -128)
+
+[node name="Spawner" parent="." node_paths=PackedStringArray("path1", "path2", "path3", "path4", "roundAnnouncer") instance=ExtResource("5_4drt5")]
+path1 = NodePath("../SpawnPath1/SpawnPathLocation")
+path2 = NodePath("../SpawnPath2/SpawnPathLocation")
+path3 = NodePath("../SpawnPath3/SpawnPathLocation")
+path4 = NodePath("../SpawnPath4/SpawnPathLocation")
+roundAnnouncer = NodePath("../Round")
+destination = "res://scenes/level3.tscn"
+
+[node name="Label" parent="Spawner" index="1"]
+metadata/_edit_use_anchors_ = true
+
+[node name="SpawnPath1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_kdiw2")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath1"]
+position = Vector2(128, -128)
+
+[node name="SpawnPath2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_r5weo")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath2"]
+position = Vector2(1280, 128)
+rotation = 1.5708
+
+[node name="SpawnPath3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_s5mic")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath3"]
+position = Vector2(1024, 776)
+rotation = 3.14159
+
+[node name="SpawnPath4" type="Path2D" parent="."]
+curve = SubResource("Curve2D_a7t1a")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath4"]
+position = Vector2(-128, 520)
+rotation = -1.5708
+
+[node name="Round" parent="." instance=ExtResource("6_fyroa")]
+
+[node name="Teleporter" parent="." instance=ExtResource("7_rgbqw")]
+position = Vector2(576, 696)
+scale = Vector2(50.9813, -1.79891)
+
+[node name="Platform Top" parent="." instance=ExtResource("8_m5xys")]
+position = Vector2(576, 128)
+scale = Vector2(1.15998, 1.00002)
+curve = SubResource("Curve2D_08dig")
+
+[node name="AnimatableBody2D" parent="Platform Top" index="0"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+
+[node name="PathFollow2D" parent="Platform Top" index="1"]
+position = Vector2(0, 0)
+progress = 0.0
+rotates = false
+
+[node name="Platform Right" parent="." instance=ExtResource("8_m5xys")]
+position = Vector2(576, 128)
+scale = Vector2(1.15998, 1.00002)
+curve = SubResource("Curve2D_feapc")
+
+[node name="AnimatableBody2D" parent="Platform Right" index="0"]
+position = Vector2(220.693, 191.996)
+scale = Vector2(1, 1)
+
+[node name="PathFollow2D" parent="Platform Right" index="1"]
+position = Vector2(220.693, 191.996)
+progress = 0.0
+rotates = false
+
+[node name="Platform Bottom" parent="." instance=ExtResource("8_m5xys")]
+position = Vector2(576, 128)
+scale = Vector2(1.15998, 1.00002)
+curve = SubResource("Curve2D_at4va")
+
+[node name="AnimatableBody2D" parent="Platform Bottom" index="0"]
+position = Vector2(0, 383.992)
+scale = Vector2(1, 1)
+
+[node name="PathFollow2D" parent="Platform Bottom" index="1"]
+position = Vector2(0, 383.992)
+progress = 0.0
+rotates = false
+
+[node name="Platform Left" parent="." instance=ExtResource("8_m5xys")]
+position = Vector2(576, 128)
+scale = Vector2(1.15998, 1.00002)
+curve = SubResource("Curve2D_hrjat")
+
+[node name="AnimatableBody2D" parent="Platform Left" index="0"]
+position = Vector2(-220.693, 191.996)
+scale = Vector2(1, 1)
+
+[node name="PathFollow2D" parent="Platform Left" index="1"]
+position = Vector2(-220.693, 191.996)
+progress = 0.0
+rotates = false
+
+[node name="wall_teleporter" parent="." instance=ExtResource("8_wlhwj")]
+position = Vector2(-64, 320)
+scale = Vector2(-0.58097, 16.035)
+
+[node name="wall_teleporter2" parent="." instance=ExtResource("8_wlhwj")]
+position = Vector2(1216, 320)
+scale = Vector2(-0.58097, 16.035)
+left = false
+
+[editable path="Player"]
+[editable path="Spawner"]
+[editable path="Platform Top"]
+[editable path="Platform Right"]
+[editable path="Platform Bottom"]
+[editable path="Platform Left"]

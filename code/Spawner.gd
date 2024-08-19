@@ -6,6 +6,7 @@ extends Node2D
 @export var path3 : Node2D
 @export var path4 : Node2D
 @export var roundAnnouncer : Node2D
+@export_file var destination
 var truepath
 var roundText = true
 var wave = 1
@@ -94,14 +95,16 @@ func _process(delta):
 							$RoundTimer.wait_time = my_random_number
 							$RoundTimer.start()
 							waiting = true
-							roundText = true
-							roundtextpaused = true
+							#roundText = true
+							#roundtextpaused = true
 					else :
 						var rng = RandomNumberGenerator.new()
 						var my_random_number = rng.randf_range(.5, 3)
 						$Timer.wait_time = my_random_number
 						$Timer.start()
 						timer_running = true
+			4: 
+				get_tree().change_scene_to_file(destination)
 
 
 func _on_timer_timeout():
