@@ -18,6 +18,7 @@ var buffer = false
 
 var coyote_time: float
 var jump_buffer: float
+@export var max_gravity : = 1000
 
 @onready var jump_velocity : float = (2.0 * jump_height) / jump_time_to_peak
 @onready var jump_gravity : float = (2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)
@@ -58,7 +59,8 @@ func _physics_process(delta):
 		scale.y = .5
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += get_gravity(velocity) * delta
+		if(velocity.y <= max_gravity) :
+			velocity.y += get_gravity(velocity) * delta
 		coyote_time -= 1
 		jump_buffer -= 1
 	if is_on_floor():

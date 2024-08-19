@@ -7,13 +7,13 @@ extends Node2D
 @export var path4 : Node2D
 @export var roundAnnouncer : Node2D
 var truepath
-var roundText = false
+var roundText = true
 var wave = 1
 var enemies = 0
 var timer_running = false
 var deaths = 0
 var waiting = false
-var roundtextpaused = false
+var roundtextpaused = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer.start()
