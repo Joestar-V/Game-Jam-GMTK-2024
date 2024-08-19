@@ -104,7 +104,7 @@ path2 = NodePath("../SpawnPath2/SpawnPathLocation")
 path3 = NodePath("../SpawnPath3/SpawnPathLocation")
 path4 = NodePath("../SpawnPath4/SpawnPathLocation")
 roundAnnouncer = NodePath("../Round")
-destination = "res://scenes/level3.tscn"
+destination = "res://scenes/level4.tscn"
 
 [node name="Label" parent="Spawner" index="1"]
 metadata/_edit_use_anchors_ = true
