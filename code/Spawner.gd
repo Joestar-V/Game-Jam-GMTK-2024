@@ -5,16 +5,108 @@ extends Node2D
 @export var path2 : Node2D
 @export var path3 : Node2D
 @export var path4 : Node2D
+@export var roundAnnouncer : Node2D
 var truepath
+var roundText = false
+var wave = 1
+var enemies = 0
+var timer_running = false
+var deaths = 0
+var waiting = false
+var roundtextpaused = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer.start()
+	timer_running = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	
+	$Label.text = str(wave)
+	if(roundText) :
+		roundAnnouncer.get_child(0).get_child(0).get_child(0).text = "Round " + str(wave)
+		if(roundAnnouncer.get_child(0).get_child(0).progress_ratio >= .5 and roundtextpaused) :
+			$AnnounceTimer.start()
+			roundText = false
+		elif(roundAnnouncer.get_child(0).get_child(0).progress_ratio >= .98) :
+			roundText = false
+			roundAnnouncer.get_child(0).get_child(0).progress_ratio = 0
+		else: 
+			roundAnnouncer.get_child(0).get_child(0).progress_ratio += .01
+		
+	
+	if(waiting) :
+		return
+	else :
+		match wave :
+			1: 
+				if timer_running:
+					return
+				else :
+					if(enemies >= 6):
+						if(deaths >= 6):
+							deaths = 0
+							wave += 1
+							var rng = RandomNumberGenerator.new()
+							var my_random_number = rng.randf_range(1, 3)
+							$RoundTimer.wait_time = my_random_number
+							$RoundTimer.start()
+							waiting = true
+							roundText = true
+							roundtextpaused = true
+					else :
+						
+						var rng = RandomNumberGenerator.new()
+						var my_random_number = rng.randf_range(.5, 3)
+						$Timer.wait_time = my_random_number
+						$Timer.start()
+						timer_running = true
+			2: 
+				if timer_running:
+					return
+				else :
+					if(enemies >= 7):
+						if(deaths >= 7):
+							deaths = 0
+							wave += 1
+							var rng = RandomNumberGenerator.new()
+							var my_random_number = rng.randf_range(1, 3)
+							$RoundTimer.wait_time = my_random_number
+							$RoundTimer.start()
+							waiting = true
+							roundText = true
+							roundtextpaused = true
+					else :
+						var rng = RandomNumberGenerator.new()
+						var my_random_number = rng.randf_range(.5, 3)
+						$Timer.wait_time = my_random_number
+						$Timer.start()
+						timer_running = true
+			3: 
+				if timer_running:
+					return
+				else :
+					if(enemies >= 8):
+						if(deaths >= 8):
+							deaths = 0
+							wave += 1
+							var rng = RandomNumberGenerator.new()
+							var my_random_number = rng.randf_range(1, 3)
+							$RoundTimer.wait_time = my_random_number
+							$RoundTimer.start()
+							waiting = true
+							roundText = true
+							roundtextpaused = true
+					else :
+						var rng = RandomNumberGenerator.new()
+						var my_random_number = rng.randf_range(.5, 3)
+						$Timer.wait_time = my_random_number
+						$Timer.start()
+						timer_running = true
 
 
 func _on_timer_timeout():
+	enemies += 1
+	timer_running = false
 	var rng = RandomNumberGenerator.new()
 	var my_random_number = rng.randi_range(1, 4)
 	print(my_random_number)
@@ -40,3 +132,19 @@ func _on_timer_timeout():
 	#mob.rotation = direction
 	mob._info(my_random_number)
 	add_child(mob)
+
+
+func _on_round_timer_timeout():
+	waiting = false
+	var rng = RandomNumberGenerator.new()
+	var my_random_number = rng.randf_range(.5, 3)
+	$Timer.wait_time = my_random_number
+	$Timer.start()
+	timer_running = true
+
+
+func _on_announce_timer_timeout():
+	roundText = true
+	roundAnnouncer.get_child(0).get_child(0).progress_ratio += .01
+
+	roundtextpaused = false

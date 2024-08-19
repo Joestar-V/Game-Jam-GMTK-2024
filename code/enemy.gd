@@ -1,11 +1,13 @@
 extends Node2D
 
 @export var bullet: PackedScene
+
 var phase = 0
 var bullet_count = 0
 var targetlocation : Vector2
 var cooldown = true
 var startpos: Vector2
+var off = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	startpos = global_position
@@ -30,20 +32,25 @@ func _info(path) :
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(phase == 0) :
-		global_position = global_position.move_toward(targetlocation, 2)
-		if(global_position == targetlocation):
-			phase = 1
-	elif(phase == 1) :
-		if(cooldown):
-			cooldown = false
-			$Timer.start()
-		if(bullet_count > 3) :
-			phase = 2
-	elif(phase == 2):
-		global_position = global_position.move_toward(startpos, 2)
-		if(global_position == startpos):
-			queue_free
+	if(off):
+		return
+	else :
+		if(phase == 0) :
+			global_position = global_position.move_toward(targetlocation, 2)
+			if(global_position == targetlocation):
+				phase = 1
+		elif(phase == 1) :
+			if(cooldown):
+				cooldown = false
+				$Timer.start()
+			if(bullet_count > 3) :
+				phase = 2
+		elif(phase == 2):
+			global_position = global_position.move_toward(startpos, 2)
+			if(global_position == startpos):
+				$"..".deaths += 1
+				off = true
+				queue_free
 			
 
 func _on_timer_timeout():
