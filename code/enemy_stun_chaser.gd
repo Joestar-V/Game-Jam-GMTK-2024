@@ -43,7 +43,7 @@ func _process(delta):
 			if(cooldown):
 				cooldown = false
 				$Timer.start()
-			if(bullet_count > 3) :
+			if(bullet_count > 1) :
 				phase = 2
 		elif(phase == 2):
 			global_position = global_position.move_toward(startpos, 2)
@@ -57,12 +57,12 @@ func _on_timer_timeout():
 	cooldown = true
 	
 	bullet_count += 1
-	if(bullet_count > 3) :
+	if(bullet_count > 1) :
 		phase == 2
 	else:
-		var target = $"../../Heart".position
-
-		var angle = position.angle_to_point(target)
+		var targetPos = $"../../Player/Player".global_position
+		var target = $"../../Player/Player"
+		var angle = position.angle_to_point(targetPos)
 		var shot = bullet.instantiate()
 		shot.initialize(angle,target)
 		shot.global_position = global_position

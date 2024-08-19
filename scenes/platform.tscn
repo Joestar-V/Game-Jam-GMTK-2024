@@ -1,18 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccix2m1mychsq"]
 
-[ext_resource type="Texture2D" uid="uid://423j5yk4f64q" path="res://art/icon.svg" id="1_a7u0r"]
+[ext_resource type="Texture2D" uid="uid://dvwsxe5obfr22" path="res://art/tileGreen.png" id="1_m604h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6hqo"]
 size = Vector2(204, 24)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D3" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(-7.62939e-06, 0)
-scale = Vector2(1.60938, 0.1875)
-texture = ExtResource("1_a7u0r")
+texture_filter = 1
+position = Vector2(-0.499996, -0.5)
+scale = Vector2(8.54167, 3.125)
+texture = ExtResource("1_m604h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_j6hqo")

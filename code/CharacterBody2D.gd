@@ -12,12 +12,15 @@ var stretched_x = false
 var cooldown = false
 var spin = false
 var buffer = false
+var stunned = false
+var frozen = false
 
 @export var coyote_time_max : = 13
 @export var jump_buffer_max : = 6
 
 var coyote_time: float
 var jump_buffer: float
+@export var max_gravity : = 1000
 
 @onready var jump_velocity : float = (2.0 * jump_height) / jump_time_to_peak
 @onready var jump_gravity : float = (2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)
@@ -34,6 +37,15 @@ func get_gravity(velocity: Vector2):
 	return fall_gravity
 
 func _physics_process(delta):
+	if(stunned) :
+		stunned = false
+		frozen = true
+		$Timer3.start()
+	if(frozen):
+		$Sprite2D.self_modulate = Color("blue")
+		return
+	else :
+		$Sprite2D.self_modulate = Color("white")
 	if Input.is_action_pressed("horizontal")  && stretched_y == false && cooldown == false:
 		stretched = true
 		stretched_x = true
@@ -58,7 +70,8 @@ func _physics_process(delta):
 		scale.y = .5
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += get_gravity(velocity) * delta
+		if(velocity.y <= max_gravity) :
+			velocity.y += get_gravity(velocity) * delta
 		coyote_time -= 1
 		jump_buffer -= 1
 	if is_on_floor():
@@ -111,3 +124,7 @@ func _on_timer_timeout():
 
 func _on_timer_2_timeout():
 	buffer = false
+
+
+func _on_timer_3_timeout():
+	frozen = false

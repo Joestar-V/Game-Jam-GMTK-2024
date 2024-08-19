@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bse80gqymllac"]
+
+[ext_resource type="Script" path="res://code/enemy_stun.gd" id="1_pbqal"]
+[ext_resource type="PackedScene" uid="uid://ddl1xls638fog" path="res://scenes/stun_bullet.tscn" id="2_x1j86"]
+[ext_resource type="Texture2D" uid="uid://423j5yk4f64q" path="res://art/icon.svg" id="2_ylpho"]
+
+[node name="enemy_stun" type="Node2D"]
+script = ExtResource("1_pbqal")
+bullet = ExtResource("2_x1j86")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ylpho")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -9,8 +9,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	global_position = global_position.move_toward(targ, 1.5)
-	
+	rotation =  position.angle_to_point(targ.global_position)
+	#var motion_vector=Vector2(1.5,0).rotated(rotation)
+	#$RigidBody2D.move_and_collide(motion_vector)
+	global_position = global_position.move_toward(targ.global_position, 1.5)
 func initialize(angles, target):
 	rotation = angles
 	targ = target
@@ -19,10 +21,16 @@ func initialize(angles, target):
 func _on_area_2d_body_entered(body):
 
 	if body.get_name() == "Player":
+		body.stunned = true
 		queue_free()
 
 
 func _on_area_2d_area_entered(area):
-	if area.get_name() == "Heart":
-		area.get_parent().health -= 1
-		queue_free()
+	#if area.get_name() == "Heart":
+	#	area.get_parent().health -= 1
+	#	queue_free()
+	pass
+
+
+func _on_timer_timeout():
+	queue_free()

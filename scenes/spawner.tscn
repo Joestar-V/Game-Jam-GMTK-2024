@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://drw0da3aj0lfg"]
+
+[ext_resource type="Script" path="res://code/Spawner.gd" id="1_sgfa8"]
+[ext_resource type="PackedScene" uid="uid://bkxs1lyj44fqn" path="res://scenes/enemy.tscn" id="2_vk4pa"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_sgfa8")
+mob_scene = ExtResource("2_vk4pa")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="RoundTimer" type="Timer" parent="."]
+
+[node name="AnnounceTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]
+[connection signal="timeout" from="AnnounceTimer" to="." method="_on_announce_timer_timeout"]
