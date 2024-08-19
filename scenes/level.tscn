@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cjs1xlg7v74eq" path="res://scenes/teleporter.tscn" id="8_6228c"]
 [ext_resource type="PackedScene" uid="uid://cj7wyourbqd07" path="res://scenes/wall_teleporter.tscn" id="9_dj480"]
 
+[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="6_73ev7"]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_rp7mi"]
 viewport_path = NodePath("SubViewport")
 
