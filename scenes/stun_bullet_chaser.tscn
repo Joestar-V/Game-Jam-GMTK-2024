@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://sbwlho3wq5gs"]
+[gd_scene load_steps=4 format=3 uid="uid://d0sh2sgsvsoyd"]
 
 [ext_resource type="Script" path="res://code/stun_bullet_chaser.gd" id="1_m6tfj"]
 [ext_resource type="Texture2D" uid="uid://423j5yk4f64q" path="res://art/icon.svg" id="2_a3xh7"]

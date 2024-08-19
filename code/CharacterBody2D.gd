@@ -42,20 +42,20 @@ func _physics_process(delta):
 		frozen = true
 		$Timer3.start()
 	if(frozen):
-		$Sprite2D.self_modulate = Color("blue")
+		$AnimatedSprite2D.self_modulate = Color("blue")
 		return
 	else :
-		$Sprite2D.self_modulate = Color("white")
+		$AnimatedSprite2D.self_modulate = Color("white")
 	if Input.is_action_pressed("horizontal")  && stretched_y == false && cooldown == false:
 		stretched = true
 		stretched_x = true
-		$Sprite2D.rotation = 0
+		$AnimatedSprite2D.rotation = 0
 		scale.x = 2
 		return
 	elif Input.is_action_pressed("vertical")  && stretched_x == false && cooldown == false:
 		stretched = true
 		stretched_y = true
-		$Sprite2D.rotation = 0
+		$AnimatedSprite2D.rotation = 0
 		scale.y = 2
 		return
 	else :
@@ -91,10 +91,10 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	elif is_on_floor():
 		spin = false
-		$Sprite2D.rotation = 0
+		$AnimatedSprite2D.rotation = 0
 	
 	if spin :
-		$Sprite2D.rotation += .5
+		$AnimatedSprite2D.rotation += .5
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if(velocity.x > 0.0 and !Input.is_action_pressed("ui_right")):

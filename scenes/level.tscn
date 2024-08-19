@@ -5,12 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="2_y7rdm"]
 [ext_resource type="PackedScene" uid="uid://hxc3lp6l0ie7" path="res://scenes/heart.tscn" id="3_ls8fg"]
 [ext_resource type="PackedScene" uid="uid://ctiovbbjw4isg" path="res://scenes/sphere.tscn" id="5_yavr6"]
-[ext_resource type="PackedScene" uid="uid://bo0vku4ha18rt" path="res://scenes/round.tscn" id="7_3viyq"]
-[ext_resource type="PackedScene" uid="uid://drw0da3aj0lfg" path="res://scenes/spawner.tscn" id="7_w37dv"]
-[ext_resource type="PackedScene" uid="uid://cjs1xlg7v74eq" path="res://scenes/teleporter.tscn" id="8_6228c"]
-[ext_resource type="PackedScene" uid="uid://cj7wyourbqd07" path="res://scenes/wall_teleporter.tscn" id="9_dj480"]
-
-[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="6_73ev7"]
+[ext_resource type="PackedScene" path="res://scenes/round.tscn" id="7_3viyq"]
+[ext_resource type="PackedScene" path="res://scenes/spawner.tscn" id="7_w37dv"]
+[ext_resource type="PackedScene" path="res://scenes/teleporter.tscn" id="8_6228c"]
+[ext_resource type="PackedScene" path="res://scenes/wall_teleporter.tscn" id="9_dj480"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rp7mi"]
 viewport_path = NodePath("SubViewport")
