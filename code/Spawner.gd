@@ -11,6 +11,13 @@ extends Node2D
 @export var roundAnnouncer : Node2D
 @export var rounds = 3
 
+@export var round1: Resource
+@export var round2: Resource
+@export var round3: Resource
+@export var round4: Resource
+@export var round5: Resource
+@export var round6: Resource
+
 @export var rapid = false
 @export var freeze = false
 @export var chaser = false
@@ -24,6 +31,7 @@ var timer_running = false
 var deaths = 0
 var waiting = false
 var roundtextpaused = true
+@onready var currentRound = round1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer.start()
@@ -34,7 +42,7 @@ func _process(delta):
 		get_tree().change_scene_to_file(destination)
 	$Label.text = str(wave)
 	if(roundText) :
-		roundAnnouncer.get_child(0).get_child(0).get_child(0).text = "Round " + str(wave)
+		roundAnnouncer.get_child(0).get_child(0).get_child(2).texture = currentRound
 		if(roundAnnouncer.get_child(0).get_child(0).progress_ratio >= .5 and roundtextpaused) :
 			$AnnounceTimer.start()
 			roundText = false
@@ -50,6 +58,7 @@ func _process(delta):
 	else :
 		match wave :
 			1: 
+				currentRound = round1
 				if timer_running:
 					return
 				else :
@@ -57,6 +66,7 @@ func _process(delta):
 						if(deaths >= 6):
 							deaths = 0
 							wave += 1
+							currentRound = round2
 							var rng = RandomNumberGenerator.new()
 							var my_random_number = rng.randf_range(1, 3)
 							$RoundTimer.wait_time = my_random_number
@@ -72,6 +82,7 @@ func _process(delta):
 						$Timer.start()
 						timer_running = true
 			2: 
+				
 				if timer_running:
 					return
 				else :
@@ -79,6 +90,7 @@ func _process(delta):
 						if(deaths >= 7):
 							deaths = 0
 							wave += 1
+							currentRound = round3
 							var rng = RandomNumberGenerator.new()
 							var my_random_number = rng.randf_range(1, 3)
 							$RoundTimer.wait_time = my_random_number
@@ -93,6 +105,7 @@ func _process(delta):
 						$Timer.start()
 						timer_running = true
 			3: 
+				
 				if timer_running:
 					return
 				else :
@@ -100,6 +113,7 @@ func _process(delta):
 						if(deaths >= 8):
 							deaths = 0
 							wave += 1
+							currentRound = round4
 							var rng = RandomNumberGenerator.new()
 							var my_random_number = rng.randf_range(1, 3)
 							$RoundTimer.wait_time = my_random_number
@@ -114,6 +128,7 @@ func _process(delta):
 						$Timer.start()
 						timer_running = true
 			4: 
+				
 				if timer_running:
 					return
 				else :
@@ -121,6 +136,8 @@ func _process(delta):
 						if(deaths >= 9):
 							deaths = 0
 							wave += 1
+							
+							currentRound = round5
 							var rng = RandomNumberGenerator.new()
 							var my_random_number = rng.randf_range(1, 3)
 							$RoundTimer.wait_time = my_random_number
@@ -135,6 +152,7 @@ func _process(delta):
 						$Timer.start()
 						timer_running = true
 			5: 
+				
 				if timer_running:
 					return
 				else :
@@ -142,6 +160,7 @@ func _process(delta):
 						if(deaths >= 10):
 							deaths = 0
 							wave += 1
+							currentRound = round6
 							var rng = RandomNumberGenerator.new()
 							var my_random_number = rng.randf_range(1, 3)
 							$RoundTimer.wait_time = my_random_number
@@ -156,6 +175,7 @@ func _process(delta):
 						$Timer.start()
 						timer_running = true
 			6: 
+				
 				if timer_running:
 					return
 				else :

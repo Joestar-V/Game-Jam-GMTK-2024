@@ -1,11 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://drw0da3aj0lfg"]
+[gd_scene load_steps=9 format=3 uid="uid://drw0da3aj0lfg"]
 
 [ext_resource type="Script" path="res://code/Spawner.gd" id="1_sgfa8"]
 [ext_resource type="PackedScene" uid="uid://bkxs1lyj44fqn" path="res://scenes/enemy.tscn" id="2_vk4pa"]
+[ext_resource type="Texture2D" uid="uid://c1gncjwsk5af8" path="res://art/round1.png" id="3_0s8rx"]
+[ext_resource type="Texture2D" uid="uid://c8uklvbsohfqq" path="res://art/round2.png" id="4_fdp3w"]
+[ext_resource type="Texture2D" uid="uid://cx5kwedfvdslm" path="res://art/round3.png" id="5_g312c"]
+[ext_resource type="Texture2D" uid="uid://dus8h5yd6emkh" path="res://art/round4.png" id="6_ce2il"]
+[ext_resource type="Texture2D" uid="uid://cl2hkti6qfau5" path="res://art/round5.png" id="7_v0v57"]
+[ext_resource type="Texture2D" uid="uid://byivebgrjhau1" path="res://art/round6.png" id="8_w752n"]
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_sgfa8")
 mob_scene = ExtResource("2_vk4pa")
+round1 = ExtResource("3_0s8rx")
+round2 = ExtResource("4_fdp3w")
+round3 = ExtResource("5_g312c")
+round4 = ExtResource("6_ce2il")
+round5 = ExtResource("7_v0v57")
+round6 = ExtResource("8_w752n")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
