@@ -1,4 +1,6 @@
 extends CharacterBody2D
+@onready var sprite = $AnimatedSprite2D
+@onready var col = $CollisionShape2D
 
 
 const SPEED = 300.0
@@ -42,23 +44,31 @@ func _physics_process(delta):
 		frozen = true
 		$Timer3.start()
 	if(frozen):
-		$AnimatedSprite2D.self_modulate = Color("blue")
+		sprite.self_modulate = Color("blue")
 		return
 	else :
-		$AnimatedSprite2D.self_modulate = Color("white")
+		sprite.self_modulate = Color("white")
+	if Input.is_action_just_pressed("horizontal")  && stretched_y == false && cooldown == false:
+		sprite.play("horizontal")
+		
+	if Input.is_action_just_pressed("vertical")  && stretched_x == false && cooldown == false:
+		sprite.play("vertical")
+		
 	if Input.is_action_pressed("horizontal")  && stretched_y == false && cooldown == false:
 		stretched = true
 		stretched_x = true
-		$AnimatedSprite2D.rotation = 0
-		scale.x = 2
+		sprite.rotation = 0
+		col.scale.x = 2
 		return
 	elif Input.is_action_pressed("vertical")  && stretched_x == false && cooldown == false:
 		stretched = true
 		stretched_y = true
-		$AnimatedSprite2D.rotation = 0
-		scale.y = 2
+		sprite.rotation = 0
+		col.scale.y = 2
 		return
 	else :
+		if sprite.animation != "idle":
+			sprite.play("idle")
 		if(stretched == true):
 			cooldown = true
 			 
@@ -66,8 +76,10 @@ func _physics_process(delta):
 		stretched = false
 		stretched_y = false
 		stretched_x = false
-		scale.x = .5
-		scale.y = .5
+		
+		col.scale.x = .5
+		col.scale.y = .5
+	
 	# Add the gravity.
 	if not is_on_floor():
 		if(velocity.y <= max_gravity) :
@@ -91,10 +103,10 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	elif is_on_floor():
 		spin = false
-		$AnimatedSprite2D.rotation = 0
+		sprite.rotation = 0
 	
 	if spin :
-		$AnimatedSprite2D.rotation += .5
+		sprite.rotation += .5
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if(velocity.x > 0.0 and !Input.is_action_pressed("ui_right")):
@@ -128,3 +140,10 @@ func _on_timer_2_timeout():
 
 func _on_timer_3_timeout():
 	frozen = false
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if sprite.animation == "vertical" :
+		sprite.play("vboil")
+	if sprite.animation == "horizontal" :
+		sprite.play("hboil")

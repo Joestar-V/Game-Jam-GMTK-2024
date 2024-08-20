@@ -75,7 +75,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1hkl"]
-size = Vector2(121, 91.6667)
+size = Vector2(232, 188)
 
 [node name="Node2D2" type="Node2D"]
 
@@ -85,15 +85,14 @@ script = ExtResource("1_xymxr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 texture_filter = 1
-position = Vector2(0, -15)
+position = Vector2(0, -1)
 scale = Vector2(8.57143, 8.80952)
 sprite_frames = SubResource("SpriteFrames_5b8a0")
-animation = &"vboil"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.693544
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0.5, -0.833328)
+position = Vector2(0, 3.8147e-06)
 shape = SubResource("RectangleShape2D_v1hkl")
 
 [node name="Timer" type="Timer" parent="Player"]
@@ -106,6 +105,7 @@ wait_time = 0.5
 wait_time = 2.0
 one_shot = true
 
+[connection signal="animation_finished" from="Player/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="timeout" from="Player/Timer2" to="Player" method="_on_timer_2_timeout"]
 [connection signal="timeout" from="Player/Timer3" to="Player" method="_on_timer_3_timeout"]

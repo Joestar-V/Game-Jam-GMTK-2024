@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dvwsxe5obfr22" path="res://art/tileGreen.png" id="1_m604h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6hqo"]
-size = Vector2(204, 24)
+size = Vector2(204, 26)
 
 [node name="Node2D3" type="Node2D"]
 
@@ -11,8 +11,8 @@ size = Vector2(204, 24)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture_filter = 1
-position = Vector2(-0.499996, -0.5)
-scale = Vector2(8.54167, 3.125)
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(4.25, 3.25)
 texture = ExtResource("1_m604h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]

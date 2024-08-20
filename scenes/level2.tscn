@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bg1g5bib87fju"]
+[gd_scene load_steps=16 format=3 uid="uid://bg1g5bib87fju"]
 
 [ext_resource type="PackedScene" uid="uid://ccix2m1mychsq" path="res://scenes/platform.tscn" id="1_k66wp"]
 [ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="2_6n8ov"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bo0vku4ha18rt" path="res://scenes/round.tscn" id="6_klqvn"]
 [ext_resource type="PackedScene" uid="uid://cjs1xlg7v74eq" path="res://scenes/teleporter.tscn" id="7_gmscb"]
 [ext_resource type="PackedScene" uid="uid://cj7wyourbqd07" path="res://scenes/wall_teleporter.tscn" id="8_q4ylj"]
+[ext_resource type="Texture2D" uid="uid://kthjwm3qc1mi" path="res://art/bg.png" id="9_8gqvy"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_e7134"]
 viewport_path = NodePath("SubViewport")
@@ -43,6 +44,12 @@ _data = {
 point_count = 2
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Bg" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(602, 401)
+scale = Vector2(6.26563, 6.26563)
+texture = ExtResource("9_8gqvy")
 
 [node name="Platform Bottom" parent="." instance=ExtResource("1_k66wp")]
 position = Vector2(280, 414)
