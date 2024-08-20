@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgil8j76fopww"]
+[gd_scene load_steps=14 format=3 uid="uid://cgil8j76fopww"]
 
 [ext_resource type="Script" path="res://code/CharacterBody2D.gd" id="1_xymxr"]
 [ext_resource type="Texture2D" uid="uid://3i7tpjruf4rt" path="res://art/gooperH4.png" id="2_7walb"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://swe78thkmiy5" path="res://art/GooperV5.png" id="8_6dxcm"]
 [ext_resource type="Texture2D" uid="uid://bk11c1fl64di1" path="res://art/GooperV2.png" id="9_4oxce"]
 [ext_resource type="Texture2D" uid="uid://l3bgoigbajly" path="res://art/GooperV3.png" id="10_s027g"]
+[ext_resource type="AudioStream" uid="uid://dbx5mhp8suqbh" path="res://art/jump (2).wav" id="11_3hl6o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5b8a0"]
 animations = [{
@@ -104,6 +105,9 @@ wait_time = 0.5
 [node name="Timer3" type="Timer" parent="Player"]
 wait_time = 2.0
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("11_3hl6o")
 
 [connection signal="animation_finished" from="Player/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]

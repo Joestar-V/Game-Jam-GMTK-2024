@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://drw0da3aj0lfg"]
+[gd_scene load_steps=13 format=3 uid="uid://drw0da3aj0lfg"]
 
 [ext_resource type="Script" path="res://code/Spawner.gd" id="1_sgfa8"]
 [ext_resource type="PackedScene" uid="uid://bkxs1lyj44fqn" path="res://scenes/enemy.tscn" id="2_vk4pa"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dus8h5yd6emkh" path="res://art/round4.png" id="6_ce2il"]
 [ext_resource type="Texture2D" uid="uid://cl2hkti6qfau5" path="res://art/round5.png" id="7_v0v57"]
 [ext_resource type="Texture2D" uid="uid://byivebgrjhau1" path="res://art/round6.png" id="8_w752n"]
+[ext_resource type="AudioStream" uid="uid://dnm4xa3j346d1" path="res://art/pickupCoin.wav" id="12_rjvmg"]
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_sgfa8")
@@ -36,6 +37,9 @@ offset_bottom = 23.0
 
 [node name="AnnounceTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_rjvmg")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]

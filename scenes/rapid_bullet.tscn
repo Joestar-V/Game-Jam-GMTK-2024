@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://y58dop3dnrcu"]
+[gd_scene load_steps=6 format=3 uid="uid://y58dop3dnrcu"]
 
 [ext_resource type="Script" path="res://code/rapid_bullet.gd" id="1_2vgib"]
 [ext_resource type="Texture2D" uid="uid://b0u13kjvbmwrh" path="res://art/Bullet2.png" id="2_d8gnj"]
+[ext_resource type="AudioStream" uid="uid://c1i12oyd2iagj" path="res://art/explosion.wav" id="3_imfwq"]
+[ext_resource type="AudioStream" uid="uid://bkrm430pde24f" path="res://art/hitHurt.wav" id="4_ybbsk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ly546"]
 size = Vector2(128, 128)
@@ -18,6 +20,14 @@ texture = ExtResource("2_d8gnj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ly546")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_imfwq")
+volume_db = -12.249
+pitch_scale = 2.21
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ybbsk")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

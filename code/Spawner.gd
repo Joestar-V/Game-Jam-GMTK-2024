@@ -45,6 +45,7 @@ func _process(delta):
 		roundAnnouncer.get_child(0).get_child(0).get_child(2).texture = currentRound
 		if(roundAnnouncer.get_child(0).get_child(0).progress_ratio >= .5 and roundtextpaused) :
 			$AnnounceTimer.start()
+			$AudioStreamPlayer.play()
 			roundText = false
 		elif(roundAnnouncer.get_child(0).get_child(0).progress_ratio >= .98) :
 			roundText = false

@@ -1,5 +1,5 @@
 extends Node2D
-
+var death = false
 var targ
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +13,9 @@ func _process(delta):
 	#var motion_vector=Vector2(1.5,0).rotated(rotation)
 	#$RigidBody2D.move_and_collide(motion_vector)
 	global_position = global_position.move_toward(targ.global_position, 1.5)
+	if(death):
+		if(!$AudioStreamPlayer.playing && !$AudioStreamPlayer2.playing):
+			queue_free()
 func initialize(angles, target):
 	rotation = angles
 	targ = target
@@ -22,7 +25,9 @@ func _on_area_2d_body_entered(body):
 
 	if body.get_name() == "Player":
 		body.stunned = true
-		queue_free()
+		$"AudioStreamPlayer".play()
+		global_position = Vector2(-100, -100)
+		death = true
 
 
 func _on_area_2d_area_entered(area):

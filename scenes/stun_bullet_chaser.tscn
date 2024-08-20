@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0sh2sgsvsoyd"]
+[gd_scene load_steps=6 format=3 uid="uid://d0sh2sgsvsoyd"]
 
 [ext_resource type="Script" path="res://code/stun_bullet_chaser.gd" id="1_m6tfj"]
 [ext_resource type="Texture2D" uid="uid://bgpwafldvkt3q" path="res://art/iceBullet.png" id="2_xxm4p"]
+[ext_resource type="AudioStream" uid="uid://c1i12oyd2iagj" path="res://art/explosion.wav" id="3_ddle4"]
+[ext_resource type="AudioStream" uid="uid://bkrm430pde24f" path="res://art/hitHurt.wav" id="4_i3g1e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jgpv"]
 size = Vector2(128, 128)
@@ -24,6 +26,14 @@ shape = SubResource("RectangleShape2D_1jgpv")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 8.0
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ddle4")
+volume_db = -12.249
+pitch_scale = 2.21
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_i3g1e")
 
 [connection signal="area_entered" from="RigidBody2D/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="RigidBody2D/Area2D" to="." method="_on_area_2d_body_entered"]
