@@ -136,8 +136,6 @@ curve = SubResource("Curve2D_epuqy")
 position = Vector2(-128, 520)
 rotation = -1.5708
 
-[node name="Round" parent="." instance=ExtResource("7_3viyq")]
-
 [node name="Teleporter" parent="." instance=ExtResource("8_6228c")]
 position = Vector2(576, 696)
 scale = Vector2(50.9813, -1.79891)
@@ -150,6 +148,8 @@ scale = Vector2(-0.58097, 16.035)
 position = Vector2(1216, 320)
 scale = Vector2(-0.58097, 16.035)
 left = false
+
+[node name="Round" parent="." instance=ExtResource("7_3viyq")]
 
 [editable path="Player"]
 [editable path="Spawner"]

@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo0vku4ha18rt"]
+[gd_scene load_steps=4 format=3 uid="uid://bo0vku4ha18rt"]
+
+[ext_resource type="Texture2D" uid="uid://y7h0vogw2f60" path="res://art/RoundText.png" id="1_36ixx"]
+[ext_resource type="Texture2D" uid="uid://c1gncjwsk5af8" path="res://art/round1.png" id="2_65rih"]
 
 [sub_resource type="Curve2D" id="Curve2D_lmknv"]
 _data = {
@@ -15,6 +18,7 @@ curve = SubResource("Curve2D_lmknv")
 position = Vector2(-128, 320)
 
 [node name="Label" type="Label" parent="Path2D/PathFollow2D"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -27,3 +31,13 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Round 1"
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-72, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("1_36ixx")
+
+[node name="RoundNum1" type="Sprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(88, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("2_65rih")
