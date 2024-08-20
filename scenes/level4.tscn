@@ -1,11 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dnoui528cih4s"]
+[gd_scene load_steps=18 format=3 uid="uid://b3s1g7w0egj50"]
 
 [ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="1_ek08i"]
 [ext_resource type="PackedScene" uid="uid://hxc3lp6l0ie7" path="res://scenes/heart.tscn" id="2_ees5t"]
 [ext_resource type="PackedScene" uid="uid://ctiovbbjw4isg" path="res://scenes/sphere.tscn" id="3_njijt"]
 [ext_resource type="PackedScene" uid="uid://drw0da3aj0lfg" path="res://scenes/spawner.tscn" id="4_ifeoh"]
 [ext_resource type="PackedScene" uid="uid://bo0vku4ha18rt" path="res://scenes/round.tscn" id="5_0u65g"]
-[ext_resource type="PackedScene" uid="uid://hkvnlky2qtx3" path="res://scenes/enemy_stun_chaser.tscn" id="5_efd4k"]
+[ext_resource type="PackedScene" uid="uid://dlg518734a5bw" path="res://scenes/enemy_fast.tscn" id="5_rpfd2"]
 [ext_resource type="PackedScene" uid="uid://cjs1xlg7v74eq" path="res://scenes/teleporter.tscn" id="6_qmx23"]
 [ext_resource type="PackedScene" uid="uid://ck3ss3bcbrk8x" path="res://scenes/moving_platform.tscn" id="7_cr0xn"]
 [ext_resource type="PackedScene" uid="uid://cj7wyourbqd07" path="res://scenes/wall_teleporter.tscn" id="8_i2k0e"]
@@ -88,7 +88,7 @@ curve = SubResource("Curve2D_wx4fq")
 position = Vector2(-128, -128)
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("path1", "path2", "path3", "path4", "roundAnnouncer") instance=ExtResource("4_ifeoh")]
-mob_scene = ExtResource("5_efd4k")
+mob_scene = ExtResource("5_rpfd2")
 path1 = NodePath("../SpawnPath1/SpawnPathLocation")
 path2 = NodePath("../SpawnPath2/SpawnPathLocation")
 path3 = NodePath("../SpawnPath3/SpawnPathLocation")
@@ -139,7 +139,6 @@ curve = SubResource("Curve2D_kqnj2")
 
 [node name="AnimatableBody2D" parent="Platform Left1" index="0"]
 position = Vector2(-220.693, 639.986)
-scale = Vector2(1, 1)
 
 [node name="PathFollow2D" parent="Platform Left1" index="1"]
 position = Vector2(-220.693, 639.986)
@@ -153,8 +152,7 @@ curve = SubResource("Curve2D_kqnj2")
 prog = 0.167
 
 [node name="AnimatableBody2D" parent="Platform Left2" index="0"]
-position = Vector2(-220.693, 490.631)
-scale = Vector2(1, 1)
+position = Vector2(-220.693, 639.986)
 
 [node name="PathFollow2D" parent="Platform Left2" index="1"]
 position = Vector2(-220.693, 639.986)
@@ -168,8 +166,7 @@ curve = SubResource("Curve2D_kqnj2")
 prog = 0.333
 
 [node name="AnimatableBody2D" parent="Platform Left3" index="0"]
-position = Vector2(-220.693, 341.353)
-scale = Vector2(1, 1)
+position = Vector2(-220.693, 639.986)
 
 [node name="PathFollow2D" parent="Platform Left3" index="1"]
 position = Vector2(-220.693, 639.986)
@@ -183,8 +180,7 @@ curve = SubResource("Curve2D_kqnj2")
 prog = 0.5
 
 [node name="AnimatableBody2D" parent="Platform Left4" index="0"]
-position = Vector2(-220.693, 191.996)
-scale = Vector2(1, 1)
+position = Vector2(-220.693, 639.986)
 
 [node name="PathFollow2D" parent="Platform Left4" index="1"]
 position = Vector2(-220.693, 639.986)
@@ -207,8 +203,7 @@ curve = SubResource("Curve2D_kqnj2")
 prog = 0.667
 
 [node name="AnimatableBody2D" parent="Platform Left5" index="0"]
-position = Vector2(-220.693, 66.5851)
-scale = Vector2(1, 1)
+position = Vector2(-220.693, 640.653)
 
 [node name="PathFollow2D" parent="Platform Left5" index="1"]
 position = Vector2(-220.693, 640.653)
@@ -223,8 +218,7 @@ curve = SubResource("Curve2D_kqnj2")
 prog = 0.833
 
 [node name="AnimatableBody2D" parent="Platform Left6" index="0"]
-position = Vector2(-220.693, -106.639)
-scale = Vector2(1, 1)
+position = Vector2(-220.693, 639.986)
 
 [node name="PathFollow2D" parent="Platform Left6" index="1"]
 position = Vector2(-220.693, 639.986)
@@ -238,7 +232,6 @@ curve = SubResource("Curve2D_345uq")
 
 [node name="AnimatableBody2D" parent="Platform Right1" index="0"]
 position = Vector2(220.693, -183.996)
-scale = Vector2(1, 1)
 
 [node name="PathFollow2D" parent="Platform Right1" index="1"]
 position = Vector2(220.693, -183.996)
@@ -252,8 +245,7 @@ curve = SubResource("Curve2D_345uq")
 prog = 0.167
 
 [node name="AnimatableBody2D" parent="Platform Right2" index="0"]
-position = Vector2(220.693, -34.6403)
-scale = Vector2(1, 1)
+position = Vector2(220.693, -183.996)
 
 [node name="PathFollow2D" parent="Platform Right2" index="1"]
 position = Vector2(220.693, -183.996)
@@ -267,8 +259,7 @@ curve = SubResource("Curve2D_345uq")
 prog = 0.333
 
 [node name="AnimatableBody2D" parent="Platform Right3" index="0"]
-position = Vector2(220.693, 114.632)
-scale = Vector2(1, 1)
+position = Vector2(220.693, -183.996)
 
 [node name="PathFollow2D" parent="Platform Right3" index="1"]
 position = Vector2(220.693, -183.996)
@@ -282,8 +273,7 @@ curve = SubResource("Curve2D_345uq")
 prog = 0.5
 
 [node name="AnimatableBody2D" parent="Platform Right4" index="0"]
-position = Vector2(220.693, 263.994)
-scale = Vector2(1, 1)
+position = Vector2(220.693, -183.996)
 
 [node name="PathFollow2D" parent="Platform Right4" index="1"]
 position = Vector2(220.693, -183.996)
@@ -297,8 +287,7 @@ curve = SubResource("Curve2D_345uq")
 prog = 0.667
 
 [node name="AnimatableBody2D" parent="Platform Right5" index="0"]
-position = Vector2(220.693, 413.354)
-scale = Vector2(1, 1)
+position = Vector2(220.693, -183.996)
 
 [node name="PathFollow2D" parent="Platform Right5" index="1"]
 position = Vector2(220.693, -183.996)
@@ -312,8 +301,7 @@ curve = SubResource("Curve2D_345uq")
 prog = 0.833
 
 [node name="AnimatableBody2D" parent="Platform Right6" index="0"]
-position = Vector2(220.693, 562.629)
-scale = Vector2(1, 1)
+position = Vector2(220.693, -183.996)
 
 [node name="PathFollow2D" parent="Platform Right6" index="1"]
 position = Vector2(220.693, -183.996)
