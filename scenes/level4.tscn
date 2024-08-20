@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://b3s1g7w0egj50"]
+[gd_scene load_steps=21 format=3 uid="uid://b3s1g7w0egj50"]
 
 [ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="1_ek08i"]
 [ext_resource type="PackedScene" uid="uid://hxc3lp6l0ie7" path="res://scenes/heart.tscn" id="2_ees5t"]
 [ext_resource type="PackedScene" uid="uid://ctiovbbjw4isg" path="res://scenes/sphere.tscn" id="3_njijt"]
 [ext_resource type="PackedScene" uid="uid://drw0da3aj0lfg" path="res://scenes/spawner.tscn" id="4_ifeoh"]
 [ext_resource type="PackedScene" uid="uid://bo0vku4ha18rt" path="res://scenes/round.tscn" id="5_0u65g"]
+[ext_resource type="PackedScene" uid="uid://bse80gqymllac" path="res://scenes/enemy_stun.tscn" id="5_5xbyt"]
+[ext_resource type="PackedScene" uid="uid://bju0xegh276ho" path="res://scenes/enemy_stun_chaser.tscn" id="5_efd4k"]
 [ext_resource type="PackedScene" uid="uid://dlg518734a5bw" path="res://scenes/enemy_fast.tscn" id="5_rpfd2"]
 [ext_resource type="PackedScene" uid="uid://cjs1xlg7v74eq" path="res://scenes/teleporter.tscn" id="6_qmx23"]
 [ext_resource type="PackedScene" uid="uid://ck3ss3bcbrk8x" path="res://scenes/moving_platform.tscn" id="7_cr0xn"]
@@ -96,11 +98,18 @@ position = Vector2(-128, -128)
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("path1", "path2", "path3", "path4", "roundAnnouncer") instance=ExtResource("4_ifeoh")]
 mob_scene = ExtResource("5_rpfd2")
+mob_scene2 = ExtResource("5_rpfd2")
+mob_scene3 = ExtResource("5_5xbyt")
+mob_scene4 = ExtResource("5_efd4k")
 path1 = NodePath("../SpawnPath1/SpawnPathLocation")
 path2 = NodePath("../SpawnPath2/SpawnPathLocation")
 path3 = NodePath("../SpawnPath3/SpawnPathLocation")
 path4 = NodePath("../SpawnPath4/SpawnPathLocation")
 roundAnnouncer = NodePath("../Round")
+rounds = 7
+rapid = true
+freeze = true
+chaser = true
 destination = "res://scenes/level3.tscn"
 
 [node name="Label" parent="Spawner" index="1"]

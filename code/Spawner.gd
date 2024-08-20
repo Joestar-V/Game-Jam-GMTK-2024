@@ -1,11 +1,20 @@
 extends Node2D
 
 @export var mob_scene: PackedScene
+@export var mob_scene2: PackedScene
+@export var mob_scene3: PackedScene
+@export var mob_scene4: PackedScene
 @export var path1 : Node2D
 @export var path2 : Node2D
 @export var path3 : Node2D
 @export var path4 : Node2D
 @export var roundAnnouncer : Node2D
+@export var rounds = 3
+
+@export var rapid = false
+@export var freeze = false
+@export var chaser = false
+
 @export_file var destination
 var truepath
 var roundText = true
@@ -21,7 +30,8 @@ func _ready():
 	timer_running = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	if(wave == rounds) :
+		get_tree().change_scene_to_file(destination)
 	$Label.text = str(wave)
 	if(roundText) :
 		roundAnnouncer.get_child(0).get_child(0).get_child(0).text = "Round " + str(wave)
@@ -57,7 +67,7 @@ func _process(delta):
 					else :
 						
 						var rng = RandomNumberGenerator.new()
-						var my_random_number = rng.randf_range(.5, 3)
+						var my_random_number = rng.randf_range(.2, 2)
 						$Timer.wait_time = my_random_number
 						$Timer.start()
 						timer_running = true
@@ -78,7 +88,7 @@ func _process(delta):
 							roundtextpaused = true
 					else :
 						var rng = RandomNumberGenerator.new()
-						var my_random_number = rng.randf_range(.5, 3)
+						var my_random_number = rng.randf_range(.2, 2)
 						$Timer.wait_time = my_random_number
 						$Timer.start()
 						timer_running = true
@@ -99,12 +109,73 @@ func _process(delta):
 							#roundtextpaused = true
 					else :
 						var rng = RandomNumberGenerator.new()
-						var my_random_number = rng.randf_range(.5, 3)
+						var my_random_number = rng.randf_range(.2, 2)
 						$Timer.wait_time = my_random_number
 						$Timer.start()
 						timer_running = true
 			4: 
-				get_tree().change_scene_to_file(destination)
+				if timer_running:
+					return
+				else :
+					if(enemies >= 9):
+						if(deaths >= 9):
+							deaths = 0
+							wave += 1
+							var rng = RandomNumberGenerator.new()
+							var my_random_number = rng.randf_range(1, 3)
+							$RoundTimer.wait_time = my_random_number
+							$RoundTimer.start()
+							waiting = true
+							#roundText = true
+							#roundtextpaused = true
+					else :
+						var rng = RandomNumberGenerator.new()
+						var my_random_number = rng.randf_range(.2, 2)
+						$Timer.wait_time = my_random_number
+						$Timer.start()
+						timer_running = true
+			5: 
+				if timer_running:
+					return
+				else :
+					if(enemies >= 10):
+						if(deaths >= 10):
+							deaths = 0
+							wave += 1
+							var rng = RandomNumberGenerator.new()
+							var my_random_number = rng.randf_range(1, 3)
+							$RoundTimer.wait_time = my_random_number
+							$RoundTimer.start()
+							waiting = true
+							#roundText = true
+							#roundtextpaused = true
+					else :
+						var rng = RandomNumberGenerator.new()
+						var my_random_number = rng.randf_range(.2, 2)
+						$Timer.wait_time = my_random_number
+						$Timer.start()
+						timer_running = true
+			6: 
+				if timer_running:
+					return
+				else :
+					if(enemies >= 11):
+						if(deaths >= 11):
+							deaths = 0
+							wave += 1
+							var rng = RandomNumberGenerator.new()
+							var my_random_number = rng.randf_range(1, 3)
+							$RoundTimer.wait_time = my_random_number
+							$RoundTimer.start()
+							waiting = true
+							#roundText = true
+							#roundtextpaused = true
+					else :
+						var rng = RandomNumberGenerator.new()
+						var my_random_number = rng.randf_range(.2, 2)
+						$Timer.wait_time = my_random_number
+						$Timer.start()
+						timer_running = true
 
 
 func _on_timer_timeout():
@@ -121,9 +192,45 @@ func _on_timer_timeout():
 		truepath = path3
 	elif(my_random_number == 4) :
 		truepath = path4
-	
-	
-	var mob = mob_scene.instantiate()
+	var mob
+	if (freeze) :
+		if (rapid) :
+			if(chaser) :
+				var random_enemy = rng.randi_range(1, 8)
+				match random_enemy:
+					1: 
+						mob = mob_scene.instantiate()
+					2:
+						mob = mob_scene2.instantiate()
+					3:
+						mob = mob_scene3.instantiate()
+					4:
+						mob = mob_scene4.instantiate()
+					_: 
+						mob = mob_scene.instantiate()
+			else : 
+				var random_enemy = rng.randi_range(1, 6)
+				match random_enemy:
+					1: 
+						mob = mob_scene.instantiate()
+					2:
+						mob = mob_scene2.instantiate()
+					3:
+						mob = mob_scene3.instantiate()
+					_: 
+						mob = mob_scene.instantiate()
+						
+		else : 
+				var random_enemy = rng.randi_range(1, 4)
+				match random_enemy:
+					1: 
+						mob = mob_scene.instantiate()
+					2:
+						mob = mob_scene3.instantiate()
+					_: 
+						mob = mob_scene.instantiate()
+	else :
+		mob = mob_scene.instantiate()
 
 	# Choose a random location on the SpawnPath.
 	# We store the reference to the SpawnLocation node.
@@ -140,7 +247,7 @@ func _on_timer_timeout():
 func _on_round_timer_timeout():
 	waiting = false
 	var rng = RandomNumberGenerator.new()
-	var my_random_number = rng.randf_range(.5, 3)
+	var my_random_number = rng.randf_range(.2, 2)
 	$Timer.wait_time = my_random_number
 	$Timer.start()
 	timer_running = true
