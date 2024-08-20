@@ -1,14 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dc0gs01galmga"]
+[gd_scene load_steps=20 format=3 uid="uid://dc0gs01galmga"]
 
 [ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="2_sr7bl"]
 [ext_resource type="PackedScene" uid="uid://hxc3lp6l0ie7" path="res://scenes/heart.tscn" id="3_x1mb0"]
 [ext_resource type="PackedScene" uid="uid://ctiovbbjw4isg" path="res://scenes/sphere.tscn" id="4_36wqi"]
 [ext_resource type="PackedScene" uid="uid://drw0da3aj0lfg" path="res://scenes/spawner.tscn" id="5_4drt5"]
 [ext_resource type="PackedScene" uid="uid://bo0vku4ha18rt" path="res://scenes/round.tscn" id="6_fyroa"]
-[ext_resource type="PackedScene" uid="uid://dlg518734a5bw" path="res://scenes/enemy_fast.tscn" id="6_m866a"]
-[ext_resource type="PackedScene" uid="uid://bse80gqymllac" path="res://scenes/enemy_stun.tscn" id="7_g7dwd"]
 [ext_resource type="PackedScene" uid="uid://cjs1xlg7v74eq" path="res://scenes/teleporter.tscn" id="7_rgbqw"]
-[ext_resource type="PackedScene" uid="uid://bju0xegh276ho" path="res://scenes/enemy_stun_chaser.tscn" id="8_ch41j"]
 [ext_resource type="PackedScene" uid="uid://ck3ss3bcbrk8x" path="res://scenes/moving_platform.tscn" id="8_m5xys"]
 [ext_resource type="PackedScene" uid="uid://cj7wyourbqd07" path="res://scenes/wall_teleporter.tscn" id="8_wlhwj"]
 [ext_resource type="Texture2D" uid="uid://kthjwm3qc1mi" path="res://art/bg.png" id="9_u4lay"]
@@ -70,7 +67,7 @@ _data = {
 }
 point_count = 5
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="Bg" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -109,17 +106,11 @@ curve = SubResource("Curve2D_jl404")
 position = Vector2(-128, -128)
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("path1", "path2", "path3", "path4", "roundAnnouncer") instance=ExtResource("5_4drt5")]
-mob_scene2 = ExtResource("6_m866a")
-mob_scene3 = ExtResource("7_g7dwd")
-mob_scene4 = ExtResource("8_ch41j")
 path1 = NodePath("../SpawnPath1/SpawnPathLocation")
 path2 = NodePath("../SpawnPath2/SpawnPathLocation")
 path3 = NodePath("../SpawnPath3/SpawnPathLocation")
 path4 = NodePath("../SpawnPath4/SpawnPathLocation")
 roundAnnouncer = NodePath("../Round")
-rounds = 6
-rapid = true
-freeze = true
 destination = "res://scenes/level4.tscn"
 
 [node name="Label" parent="Spawner" index="1"]

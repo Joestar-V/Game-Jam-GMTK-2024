@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 
 const SPEED = 360.0
-const JUMP_VELOCITY = -580.0
+const JUMP_VELOCITY = -600.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -93,11 +93,11 @@ func _physics_process(delta):
 	# Handle jump.
 	if(Input.is_action_just_pressed("ui_accept") and Input.is_action_pressed("ui_left") and buffer and ((is_on_floor() or coyote_time > 0) or (is_on_floor() and jump_buffer > 0))):
 		velocity.x = -velocity.x
-		velocity.y = JUMP_VELOCITY - 100.0
+		velocity.y = JUMP_VELOCITY - 180.0
 		spin = true
 	elif(Input.is_action_just_pressed("ui_accept") and buffer and Input.is_action_pressed("ui_right") and ((is_on_floor() or coyote_time > 0) or (is_on_floor() and jump_buffer > 0))):
 		velocity.x = - velocity.x
-		velocity.y = JUMP_VELOCITY - 100.0
+		velocity.y = JUMP_VELOCITY - 180.0
 		spin = true
 	elif Input.is_action_just_pressed("ui_accept") and (is_on_floor() or coyote_time > 0) or (is_on_floor() and jump_buffer > 0):
 		velocity.y = JUMP_VELOCITY
