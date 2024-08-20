@@ -17,7 +17,7 @@ curve = SubResource("Curve2D_lmknv")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(-128, 320)
 
-[node name="Label" type="Label" parent="Path2D/PathFollow2D"]
+[node name="Label1" type="Label" parent="Path2D/PathFollow2D"]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -33,11 +33,13 @@ grow_vertical = 2
 text = "Round 1"
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+modulate = Color(0.996078, 1, 1, 1)
 position = Vector2(-72, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("1_36ixx")
 
 [node name="RoundNum1" type="Sprite2D" parent="Path2D/PathFollow2D"]
+modulate = Color(0.996078, 1, 1, 1)
 position = Vector2(88, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("2_65rih")
