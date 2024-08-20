@@ -149,7 +149,6 @@ curve = SubResource("Curve2D_08dig")
 
 [node name="AnimatableBody2D" parent="Platform Top" index="0"]
 position = Vector2(0, 0)
-scale = Vector2(1, 1)
 
 [node name="PathFollow2D" parent="Platform Top" index="1"]
 position = Vector2(0, 0)
@@ -163,7 +162,6 @@ curve = SubResource("Curve2D_feapc")
 
 [node name="AnimatableBody2D" parent="Platform Right" index="0"]
 position = Vector2(220.693, 191.996)
-scale = Vector2(1, 1)
 
 [node name="PathFollow2D" parent="Platform Right" index="1"]
 position = Vector2(220.693, 191.996)
@@ -177,7 +175,6 @@ curve = SubResource("Curve2D_at4va")
 
 [node name="AnimatableBody2D" parent="Platform Bottom" index="0"]
 position = Vector2(0, 383.992)
-scale = Vector2(1, 1)
 
 [node name="PathFollow2D" parent="Platform Bottom" index="1"]
 position = Vector2(0, 383.992)
@@ -191,7 +188,6 @@ curve = SubResource("Curve2D_hrjat")
 
 [node name="AnimatableBody2D" parent="Platform Left" index="0"]
 position = Vector2(-220.693, 191.996)
-scale = Vector2(1, 1)
 
 [node name="PathFollow2D" parent="Platform Left" index="1"]
 position = Vector2(-220.693, 191.996)
