@@ -1,15 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlg518734a5bw"]
 
-[ext_resource type="Texture2D" uid="uid://423j5yk4f64q" path="res://art/icon.svg" id="1_7mo7u"]
 [ext_resource type="Script" path="res://code/enemy_fast.gd" id="1_scf8o"]
 [ext_resource type="PackedScene" uid="uid://y58dop3dnrcu" path="res://scenes/rapid_bullet.tscn" id="2_kwaay"]
+[ext_resource type="Texture2D" uid="uid://bbkan61ujum1a" path="res://art/Foe.png" id="3_pxtqj"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_scf8o")
 bullet = ExtResource("2_kwaay")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_7mo7u")
+scale = Vector2(4, 4)
+texture = ExtResource("3_pxtqj")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25

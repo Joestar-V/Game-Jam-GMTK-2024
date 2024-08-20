@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4evyhs85cdek"]
+
+[ext_resource type="Texture2D" uid="uid://dpnrk4tu6n37v" path="res://art/gameover1.png" id="1_01lcj"]
+[ext_resource type="AudioStream" uid="uid://dtb20thxuxaib" path="res://art/FROGE.MP4.mp3" id="2_ugcax"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Gameover1" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("1_01lcj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ugcax")
+autoplay = true

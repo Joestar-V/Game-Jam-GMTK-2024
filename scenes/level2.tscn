@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bg1g5bib87fju"]
+[gd_scene load_steps=17 format=3 uid="uid://bg1g5bib87fju"]
 
 [ext_resource type="PackedScene" uid="uid://ccix2m1mychsq" path="res://scenes/platform.tscn" id="1_k66wp"]
 [ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="2_6n8ov"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cjs1xlg7v74eq" path="res://scenes/teleporter.tscn" id="7_gmscb"]
 [ext_resource type="PackedScene" uid="uid://cj7wyourbqd07" path="res://scenes/wall_teleporter.tscn" id="8_q4ylj"]
 [ext_resource type="Texture2D" uid="uid://kthjwm3qc1mi" path="res://art/bg.png" id="9_8gqvy"]
+[ext_resource type="AudioStream" uid="uid://cbdujfmndhmd" path="res://art/Deltarune - Rude Buster (St. Ocean Remix).mp3" id="10_v10xm"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_e7134"]
 viewport_path = NodePath("SubViewport")
@@ -150,6 +151,10 @@ scale = Vector2(-0.58097, 16.035)
 position = Vector2(1216, 320)
 scale = Vector2(-0.58097, 16.035)
 left = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_v10xm")
+autoplay = true
 
 [editable path="Player"]
 [editable path="Spawner"]

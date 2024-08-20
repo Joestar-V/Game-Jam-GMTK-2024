@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3s1g7w0egj50"]
+[gd_scene load_steps=19 format=3 uid="uid://b3s1g7w0egj50"]
 
 [ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="1_ek08i"]
 [ext_resource type="PackedScene" uid="uid://hxc3lp6l0ie7" path="res://scenes/heart.tscn" id="2_ees5t"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cjs1xlg7v74eq" path="res://scenes/teleporter.tscn" id="6_qmx23"]
 [ext_resource type="PackedScene" uid="uid://ck3ss3bcbrk8x" path="res://scenes/moving_platform.tscn" id="7_cr0xn"]
 [ext_resource type="PackedScene" uid="uid://cj7wyourbqd07" path="res://scenes/wall_teleporter.tscn" id="8_i2k0e"]
+[ext_resource type="AudioStream" uid="uid://cbdujfmndhmd" path="res://art/Deltarune - Rude Buster (St. Ocean Remix).mp3" id="10_clm4w"]
 [ext_resource type="Texture2D" uid="uid://kthjwm3qc1mi" path="res://art/bg.png" id="10_pp175"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6y4ys"]
@@ -102,7 +103,7 @@ roundAnnouncer = NodePath("../Round")
 rapid = true
 freeze = true
 chaser = true
-destination = "res://scenes/level3.tscn"
+destination = "res://scenes/victory.tscn"
 
 [node name="Label" parent="Spawner" index="1"]
 metadata/_edit_use_anchors_ = true
@@ -320,6 +321,10 @@ rotates = false
 position = Vector2(576, -112)
 scale = Vector2(50.9813, -1.79891)
 top = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_clm4w")
+autoplay = true
 
 [editable path="Player"]
 [editable path="Spawner"]
