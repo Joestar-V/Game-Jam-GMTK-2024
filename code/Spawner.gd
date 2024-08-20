@@ -40,7 +40,7 @@ func _ready():
 func _process(delta):
 	if(wave == rounds) :
 		get_tree().change_scene_to_file(destination)
-	$Label.text = str(wave)
+	#print(get_viewport().get_visible_rect().size)
 	if(roundText) :
 		roundAnnouncer.get_child(0).get_child(0).get_child(2).texture = currentRound
 		if(roundAnnouncer.get_child(0).get_child(0).progress_ratio >= .5 and roundtextpaused) :

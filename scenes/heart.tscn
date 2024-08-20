@@ -10,6 +10,7 @@ height = 400.0
 [node name="Node2D2" type="Node2D"]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_8xhxv")
+destination = "res://scenes/gameover.tscn"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.14441e-05, 1.52588e-05)

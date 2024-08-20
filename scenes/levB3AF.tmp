@@ -1,0 +1,155 @@
+[gd_scene load_steps=17 format=3 uid="uid://ckoyyxj2kajkn"]
+
+[ext_resource type="PackedScene" uid="uid://ccix2m1mychsq" path="res://scenes/platform.tscn" id="1_qf50k"]
+[ext_resource type="Script" path="res://code/level.gd" id="1_y2gmh"]
+[ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="2_y7rdm"]
+[ext_resource type="PackedScene" uid="uid://hxc3lp6l0ie7" path="res://scenes/heart.tscn" id="3_ls8fg"]
+[ext_resource type="PackedScene" uid="uid://ctiovbbjw4isg" path="res://scenes/sphere.tscn" id="5_yavr6"]
+[ext_resource type="PackedScene" uid="uid://bo0vku4ha18rt" path="res://scenes/round.tscn" id="7_3viyq"]
+[ext_resource type="PackedScene" uid="uid://drw0da3aj0lfg" path="res://scenes/spawner.tscn" id="7_w37dv"]
+[ext_resource type="PackedScene" uid="uid://cjs1xlg7v74eq" path="res://scenes/teleporter.tscn" id="8_6228c"]
+[ext_resource type="PackedScene" uid="uid://cj7wyourbqd07" path="res://scenes/wall_teleporter.tscn" id="9_dj480"]
+[ext_resource type="Texture2D" uid="uid://kthjwm3qc1mi" path="res://art/bg.png" id="10_wcdt3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rp7mi"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Curve2D" id="Curve2D_4wmrw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -128, -128, 0, 0, 0, 0, 1280, -128, 0, 0, 0, 0, 1280, 768, 0, 0, 0, 0, -128, 768, 0, 0, 0, 0, -128, -128)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_nw0ad"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, -128, 0, 0, 0, 0, 1024, -128)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_xinsb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1280, 128, 0, 0, 0, 0, 1280, 520)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_t8s7t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1024, 776, 0, 0, 0, 0, 128, 776)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_epuqy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -128, 520, 0, 0, 0, 0, -128, 120)
+}
+point_count = 2
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_y2gmh")
+
+[node name="Bg" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(602, 401)
+scale = Vector2(6.26563, 6.26563)
+texture = ExtResource("10_wcdt3")
+
+[node name="Platform Bottom" parent="." instance=ExtResource("1_qf50k")]
+position = Vector2(536, 414)
+scale = Vector2(1.16, 1)
+
+[node name="Platform Left" parent="." instance=ExtResource("1_qf50k")]
+position = Vector2(267, 292)
+scale = Vector2(1.16, 1.16)
+
+[node name="Platform Right" parent="." instance=ExtResource("1_qf50k")]
+position = Vector2(796, 281)
+scale = Vector2(1.16, 1.16)
+
+[node name="Platfoorm Top" parent="." instance=ExtResource("1_qf50k")]
+position = Vector2(537, 177)
+scale = Vector2(1.16, 1.16)
+
+[node name="Player" parent="." instance=ExtResource("2_y7rdm")]
+position = Vector2(261, 188)
+
+[node name="Player" parent="Player" index="0"]
+scale = Vector2(0.501716, 0.5)
+jump_height = 68.675
+jump_time_to_descent = 0.31
+
+[node name="Heart" parent="." instance=ExtResource("3_ls8fg")]
+position = Vector2(522, 297)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(523, 294)
+scale = Vector2(1.33386, 1.02694)
+texture = SubResource("ViewportTexture_rp7mi")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="sphere" parent="SubViewport" instance=ExtResource("5_yavr6")]
+
+[node name="SpawnPath" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_4wmrw")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath"]
+position = Vector2(-128, -128)
+
+[node name="Spawner" parent="." node_paths=PackedStringArray("path1", "path2", "path3", "path4", "roundAnnouncer") instance=ExtResource("7_w37dv")]
+path1 = NodePath("../SpawnPath1/SpawnPathLocation")
+path2 = NodePath("../SpawnPath2/SpawnPathLocation")
+path3 = NodePath("../SpawnPath3/SpawnPathLocation")
+path4 = NodePath("../SpawnPath4/SpawnPathLocation")
+roundAnnouncer = NodePath("../Round")
+destination = "res://scenes/level2.tscn"
+
+[node name="Label" parent="Spawner" index="1"]
+metadata/_edit_use_anchors_ = true
+
+[node name="SpawnPath1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_nw0ad")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath1"]
+position = Vector2(128, -128)
+
+[node name="SpawnPath2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_xinsb")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath2"]
+position = Vector2(1280, 128)
+rotation = 1.5708
+
+[node name="SpawnPath3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_t8s7t")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath3"]
+position = Vector2(1024, 776)
+rotation = 3.14159
+
+[node name="SpawnPath4" type="Path2D" parent="."]
+curve = SubResource("Curve2D_epuqy")
+
+[node name="SpawnPathLocation" type="PathFollow2D" parent="SpawnPath4"]
+position = Vector2(-128, 520)
+rotation = -1.5708
+
+[node name="Teleporter" parent="." instance=ExtResource("8_6228c")]
+position = Vector2(576, 696)
+scale = Vector2(50.9813, -1.79891)
+
+[node name="wall_teleporter" parent="." instance=ExtResource("9_dj480")]
+position = Vector2(-64, 320)
+scale = Vector2(-0.58097, 16.035)
+
+[node name="wall_teleporter2" parent="." instance=ExtResource("9_dj480")]
+position = Vector2(1216, 320)
+scale = Vector2(-0.58097, 16.035)
+left = false
+
+[node name="Round" parent="." instance=ExtResource("7_3viyq")]
+
+[editable path="Player"]
+[editable path="Spawner"]

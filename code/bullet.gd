@@ -25,4 +25,5 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_area_entered(area):
 	if area.get_name() == "Heart":
 		area.get_parent().health -= 1
+		global_position = Vector2(-100, -100)
 		queue_free()
