@@ -1,20 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://hxc3lp6l0ie7"]
 
 [ext_resource type="Script" path="res://code/heart.gd" id="1_8xhxv"]
-[ext_resource type="Texture2D" uid="uid://423j5yk4f64q" path="res://art/icon.svg" id="1_bb2d2"]
+[ext_resource type="Texture2D" uid="uid://d4h4twprss288" path="res://art/Flower.png" id="2_3h6nl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtrra"]
-size = Vector2(129, 129)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7hiec"]
+radius = 120.0
+height = 400.0
 
 [node name="Node2D2" type="Node2D"]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_8xhxv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_bb2d2")
+position = Vector2(-1.14441e-05, 1.52588e-05)
+scale = Vector2(11.4286, 11.4286)
+texture = ExtResource("2_3h6nl")
 
 [node name="Heart" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Heart"]
-position = Vector2(0.499996, -0.499997)
-shape = SubResource("RectangleShape2D_jtrra")
+position = Vector2(-5.68434e-14, 9.53674e-07)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("CapsuleShape2D_7hiec")
