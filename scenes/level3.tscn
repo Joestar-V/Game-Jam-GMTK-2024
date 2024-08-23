@@ -112,6 +112,7 @@ path2 = NodePath("../SpawnPath2/SpawnPathLocation")
 path3 = NodePath("../SpawnPath3/SpawnPathLocation")
 path4 = NodePath("../SpawnPath4/SpawnPathLocation")
 roundAnnouncer = NodePath("../Round")
+rounds = 6
 rapid = true
 freeze = true
 destination = "res://scenes/level4.tscn"

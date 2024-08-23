@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bg1g5bib87fju"]
+[gd_scene load_steps=16 format=3 uid="uid://bg1g5bib87fju"]
 
 [ext_resource type="PackedScene" uid="uid://ccix2m1mychsq" path="res://scenes/platform.tscn" id="1_k66wp"]
 [ext_resource type="PackedScene" uid="uid://cgil8j76fopww" path="res://scenes/character.tscn" id="2_6n8ov"]
@@ -10,9 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cj7wyourbqd07" path="res://scenes/wall_teleporter.tscn" id="8_q4ylj"]
 [ext_resource type="Texture2D" uid="uid://kthjwm3qc1mi" path="res://art/bg.png" id="9_8gqvy"]
 [ext_resource type="AudioStream" uid="uid://cbdujfmndhmd" path="res://art/Deltarune - Rude Buster (St. Ocean Remix).mp3" id="10_v10xm"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_e7134"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Curve2D" id="Curve2D_qxxg3"]
 _data = {
@@ -53,19 +50,19 @@ scale = Vector2(6.26563, 6.26563)
 texture = ExtResource("9_8gqvy")
 
 [node name="Platform Bottom" parent="." instance=ExtResource("1_k66wp")]
-position = Vector2(280, 414)
+position = Vector2(328, 435)
 scale = Vector2(1.16, 1)
 
 [node name="Platform Left" parent="." instance=ExtResource("1_k66wp")]
-position = Vector2(288, 177)
+position = Vector2(328, 203)
 scale = Vector2(1.16, 1.16)
 
 [node name="Platform Right" parent="." instance=ExtResource("1_k66wp")]
-position = Vector2(796, 414)
+position = Vector2(824, 433)
 scale = Vector2(1.16, 1.16)
 
 [node name="Platfoorm Top" parent="." instance=ExtResource("1_k66wp")]
-position = Vector2(796, 177)
+position = Vector2(824, 203)
 scale = Vector2(1.16, 1.16)
 
 [node name="Player" parent="." instance=ExtResource("2_6n8ov")]
@@ -78,13 +75,7 @@ jump_height = 68.675
 jump_time_to_descent = 0.31
 
 [node name="Heart" parent="." instance=ExtResource("3_024tt")]
-position = Vector2(522, 297)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(523, 294)
-scale = Vector2(1.33386, 1.02694)
-texture = SubResource("ViewportTexture_e7134")
+position = Vector2(576, 320)
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -104,6 +95,7 @@ path2 = NodePath("../SpawnPath2/SpawnPathLocation")
 path3 = NodePath("../SpawnPath3/SpawnPathLocation")
 path4 = NodePath("../SpawnPath4/SpawnPathLocation")
 roundAnnouncer = NodePath("../Round")
+rounds = 5
 freeze = true
 destination = "res://scenes/level3.tscn"
 

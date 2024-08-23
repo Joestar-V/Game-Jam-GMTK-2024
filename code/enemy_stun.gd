@@ -64,7 +64,7 @@ func _on_timer_timeout():
 
 		var angle = position.angle_to_point(target)
 		var shot = bullet.instantiate()
-		shot.initialize(angle,target)
+		shot.initialize(angle,target,get_tree().current_scene)
 		shot.global_position = global_position
 		get_node("/root").add_child(shot)
 		$Timer.start()

@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctiovbbjw4isg"]
+[gd_scene load_steps=5 format=3 uid="uid://ctiovbbjw4isg"]
 
 [ext_resource type="Script" path="res://code/sphere.gd" id="1_nexrv"]
 [ext_resource type="SphereMesh" uid="uid://kqymuglagy8x" path="res://art/orb.tres" id="2_bpulv"]
+[ext_resource type="Texture2D" uid="uid://k1qx7gsvvn1f" path="res://4f816dc086585b8c9d4516821a15dc6e.png" id="2_k2os2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jqpol"]
+albedo_texture = ExtResource("2_k2os2")
 
 [node name="sphere" type="Node3D"]
 script = ExtResource("1_nexrv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_jqpol")
 mesh = ExtResource("2_bpulv")
 skeleton = NodePath("../../..")
 

@@ -13,7 +13,7 @@ config_version=5
 config/name="scale_jam"
 run/main_scene="res://scenes/level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://art/icon.svg"
+config/icon="res://art/Foe.png"
 
 [autoload]
 
